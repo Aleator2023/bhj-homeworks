@@ -9,12 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.querySelector('.card').appendChild(clearButton);
 
-    const savedText = localStorage.getItem('editorText');
-    if (savedText !== null) {
-        editor.value = savedText;
-    }
+    // Получение сохранённого текста и установка его в редактор
+    editor.value = localStorage.getItem('editorText') || '';
 
-        editor.addEventListener('input', () => {
+    // Сохранение текста при его изменении
+    editor.addEventListener('input', () => {
         localStorage.setItem('editorText', editor.value);
     });
 });

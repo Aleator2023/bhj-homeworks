@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', event => {
         event.preventDefault();
         const formData = new FormData(form);
-        
+
         fetch('https://students.netoservices.ru/nestjs-backend/auth', {
             method: 'POST',
             body: formData
@@ -29,9 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert('Неверный логин/пароль');
             }
+            form.reset(); // Сброс формы после попытки авторизации
         })
         .catch(error => {
             console.error('Ошибка:', error);
+            form.reset(); // Сброс формы также и в случае ошибки
         });
     });
 

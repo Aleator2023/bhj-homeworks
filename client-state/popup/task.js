@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Проверка, было ли ранее закрыто всплывающее окно
-    if (!localStorage.getItem('modalClosed')) {
+    if (!getCookie('modalClosed')) {
         modal.classList.add('modal_active');
     }
 
@@ -19,6 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModalButton.addEventListener('click', () => {
         console.log('Закрытие модального окна и установка cookie');
         modal.classList.remove('modal_active');
-        localStorage.setItem('modalClosed', 'true');        
+        document.cookie = "modalClosed=true; path=/; max-age=86400"; // Устанавливаем куки с продолжительностью 1 день
     });
 });
